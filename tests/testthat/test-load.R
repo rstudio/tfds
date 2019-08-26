@@ -9,6 +9,7 @@ test_that("Can load a dataset", {
   batch <- reticulate::iter_next(it)
 
   expect_equal(class(batch), "list")
+  expect_s3_class(batch[[1]], "tensorflow.python.framework.ops.Tensor")
 })
 
 test_that("Can use splits", {
@@ -20,4 +21,5 @@ test_that("Can use splits", {
   batch <- reticulate::iter_next(it)
 
   expect_equal(class(batch), "list")
+  expect_s3_class(batch[[1]], "tensorflow.python.framework.ops.Tensor")
 })
