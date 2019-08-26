@@ -1,0 +1,19 @@
+Package: tfds
+Title: Interface to 'TensorFlow' Collection of Datasets
+Version: 0.0.0.9000
+Authors@R: c(
+  person("Daniel", "Falbel", role = c("ctb", "cph", "cre"), email = "daniel@rstudio.com"),
+  person(family = "RStudio", role = c("ctb", "cph", "fnd")),
+  person(family = "Google Inc.", role = c("cph"))
+  )
+Description: An interface to a collection of datasets ready to use with TensorFlow.
+SystemRequirements: TensorFlow >= 1.4 (https://www.tensorflow.org/)
+License: Apache License 2.0
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
+Imports: 
+    reticulate
+Suggests:
+    rstudioapi,
+    testthat (>= 2.1.0)
