@@ -5,10 +5,10 @@
 \title{Loads the named dataset into a TensorFlow Dataset}
 \usage{
 tfds_load(name, split = NULL, data_dir = NULL, batch_size = NULL,
-  in_memory = NULL, download = TRUE, as_supervised = FALSE,
-  decoders = NULL, with_info = FALSE, builder_kwargs = NULL,
-  download_and_prepare_kwargs = NULL, as_dataset_kwargs = NULL,
-  try_gcs = FALSE)
+  in_memory = NULL, download = TRUE, shuffle_files = FALSE,
+  as_supervised = FALSE, decoders = NULL, with_info = FALSE,
+  builder_kwargs = NULL, download_and_prepare_kwargs = NULL,
+  as_dataset_kwargs = NULL, try_gcs = FALSE)
 }
 \arguments{
 \item{name}{`str`, the registered name of the `DatasetBuilder` (the snake case
@@ -42,6 +42,9 @@ size across the dataset.}
 before calling `tf.DatasetBuilder.as_dataset`. If `False`, data is
 expected to be in `data_dir`. If `True` and the data is already in
 `data_dir`, `download_and_prepare` is a no-op.}
+
+\item{shuffle_files}{`bool`, whether to shuffle the input files.
+Defaults to `False`.}
 
 \item{as_supervised}{`bool`, if `True`, the returned `tf.data.Dataset`
 will have a 2-tuple structure `(input, label)` according to
