@@ -12,3 +12,6 @@ load_token_text_encoder(path)
 \description{
 Loads a Token Text Encoder
 }
+\seealso{
+\code{\link[=token_text_encoder]{token_text_encoder()}}
+}

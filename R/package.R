@@ -10,8 +10,6 @@ tfds <- NULL
 
 #' TensorFlow Datasets version
 #'
-#' @returns the installed tfds version.
-#'
 #' @export
 tfds_version <- function() {
   string_version <- tfds$version$`__version__`

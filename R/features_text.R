@@ -13,6 +13,9 @@
 #'  elements of `vocab_list`.
 #' @param decode_token_separator the string used to separate tokens when decoding.
 #'
+#' @seealso [save_token_text_encoder()], [load_token_text_encoder()], [encode()]
+#'  and [decode()]
+#'
 #' @export
 token_text_encoder <- function(vocab_list,
                                oov_buckets = 1,
@@ -37,6 +40,8 @@ token_text_encoder <- function(vocab_list,
 #' @param token_text_encoder a Token Text Encoder created with `token_text_encoder()`
 #' @param path path to save the text encoder.
 #'
+#' @seealso [token_text_encoder()]
+#'
 #' @export
 save_token_text_encoder <- function(token_text_encoder, path) {
   token_text_encoder$save_to_file(path.expand(path))
@@ -45,6 +50,8 @@ save_token_text_encoder <- function(token_text_encoder, path) {
 #' Loads a Token Text Encoder
 #'
 #' @param path path of a saved token text encoder.
+#'
+#' @seealso [token_text_encoder()]
 #'
 #' @export
 load_token_text_encoder <- function(path) {
@@ -55,9 +62,9 @@ load_token_text_encoder <- function(path) {
 #'
 #' @inheritParams save_token_text_encoder
 #' @param text string to encode using the Token Text encoder
-#'
+#' @seealso [token_text_encoder()]
 #' @export
-encode_text <- function(token_text_encoder, text) {
+encode <- function(token_text_encoder, text) {
   token_text_encoder$encode(text)
 }
 
@@ -65,8 +72,8 @@ encode_text <- function(token_text_encoder, text) {
 #'
 #' @inheritParams save_token_text_encoder
 #' @param ids ids to decode using the Token Text encoder.
-#'
+#' @seealso [token_text_encoder()]
 #' @export
-decode_text <- function(token_text_encoder, ids) {
+decode <- function(token_text_encoder, ids) {
   token_text_encoder$decode(ids)
 }

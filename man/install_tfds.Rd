@@ -21,8 +21,8 @@ PATH and other conventional install locations).}
 
 \item{version}{By default the latest PyPi version will be installed.
 
-  Alternatively, you can provide the full URL to an installer binary (e.g.
-  for a nightly binary).}
+Alternatively, you can provide the full URL to an installer binary (e.g.
+for a nightly binary).}
 
 \item{envname}{Name of Python environment to install within}
 
@@ -32,8 +32,8 @@ only occur within RStudio).}
 \item{conda_python_version}{the python version installed in the created conda
 environment. Python 3.6 is installed by default.}
 
-\item{...}{other arguments passed to [reticulate::conda_install()] or
-[reticulate::virtualenv_install()].}
+\item{...}{other arguments passed to \code{\link[reticulate:conda_install]{reticulate::conda_install()}} or
+\code{\link[reticulate:virtualenv_install]{reticulate::virtualenv_install()}}.}
 }
 \description{
 Installs TensorFlow Datasets

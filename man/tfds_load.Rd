@@ -11,70 +11,70 @@ tfds_load(name, split = NULL, data_dir = NULL, batch_size = NULL,
   as_dataset_kwargs = NULL, try_gcs = FALSE)
 }
 \arguments{
-\item{name}{`str`, the registered name of the `DatasetBuilder` (the snake case
-                                                          version of the class name). This can be either `"dataset_name"` or
-`"dataset_name/config_name"` for datasets with `BuilderConfig`s.
+\item{name}{\code{str}, the registered name of the \code{DatasetBuilder} (the snake case
+version of the class name). This can be either \code{"dataset_name"} or
+\code{"dataset_name/config_name"} for datasets with \code{BuilderConfig}s.
 As a convenience, this string may contain comma-separated keyword
-arguments for the builder. For example `"foo_bar/a=True,b=3"` would use
-the `FooBar` dataset passing the keyword arguments `a=True` and `b=3`
-(for builders with configs, it would be `"foo_bar/zoo/a=True,b=3"` to
-  use the `"zoo"` config and pass to the builder keyword arguments `a=True`
-  and `b=3`).}
+arguments for the builder. For example \code{"foo_bar/a=True,b=3"} would use
+the \code{FooBar} dataset passing the keyword arguments \code{a=True} and \code{b=3}
+(for builders with configs, it would be \code{"foo_bar/zoo/a=True,b=3"} to
+use the \code{"zoo"} config and pass to the builder keyword arguments \code{a=True}
+and \code{b=3}).}
 
-\item{split}{`tfds.Split` or `str`, which split of the data to load. If None,
-will return a `dict` with all splits (typically `tfds.Split.TRAIN` and
-                                      `tfds.Split.TEST`).}
+\item{split}{\code{tfds.Split} or \code{str}, which split of the data to load. If None,
+will return a \code{dict} with all splits (typically \code{tfds.Split.TRAIN} and
+\code{tfds.Split.TEST}).}
 
-\item{data_dir}{`str` (optional), directory to read/write data.
+\item{data_dir}{\code{str} (optional), directory to read/write data.
 Defaults to "~/tensorflow_datasets".}
 
-\item{batch_size}{`int`, if set, add a batch dimension to examples. Note that
+\item{batch_size}{\code{int}, if set, add a batch dimension to examples. Note that
 variable length features will be 0-padded. If
-`batch_size=-1`, will return the full dataset as `tf.Tensor`s.}
+\code{batch_size=-1}, will return the full dataset as \code{tf.Tensor}s.}
 
-\item{in_memory}{`bool`, if `True`, loads the dataset in memory which
-increases iteration speeds. Note that if `True` and the dataset has
+\item{in_memory}{\code{bool}, if \code{True}, loads the dataset in memory which
+increases iteration speeds. Note that if \code{True} and the dataset has
 unknown dimensions, the features will be padded to the maximum
 size across the dataset.}
 
-\item{download}{`bool` (optional), whether to call
-`tfds.core.DatasetBuilder.download_and_prepare`
-before calling `tf.DatasetBuilder.as_dataset`. If `False`, data is
-expected to be in `data_dir`. If `True` and the data is already in
-`data_dir`, `download_and_prepare` is a no-op.}
+\item{download}{\code{bool} (optional), whether to call
+\code{tfds.core.DatasetBuilder.download_and_prepare}
+before calling \code{tf.DatasetBuilder.as_dataset}. If \code{False}, data is
+expected to be in \code{data_dir}. If \code{True} and the data is already in
+\code{data_dir}, \code{download_and_prepare} is a no-op.}
 
-\item{shuffle_files}{`bool`, whether to shuffle the input files.
-Defaults to `False`.}
+\item{shuffle_files}{\code{bool}, whether to shuffle the input files.
+Defaults to \code{False}.}
 
-\item{as_supervised}{`bool`, if `True`, the returned `tf.data.Dataset`
-will have a 2-tuple structure `(input, label)` according to
-`builder.info.supervised_keys`. If `False`, the default,
-the returned `tf.data.Dataset` will have a dictionary with all the
+\item{as_supervised}{\code{bool}, if \code{True}, the returned \code{tf.data.Dataset}
+will have a 2-tuple structure \code{(input, label)} according to
+\code{builder.info.supervised_keys}. If \code{False}, the default,
+the returned \code{tf.data.Dataset} will have a dictionary with all the
 features.}
 
-\item{decoders}{Nested dict of `Decoder` objects which allow to customize the
+\item{decoders}{Nested dict of \code{Decoder} objects which allow to customize the
 decoding. The structure should match the feature structure, but only
 customized feature keys need to be present. See
-[the guide](https://github.com/tensorflow/datasets/tree/master/docs/decode.md)
+\href{https://github.com/tensorflow/datasets/tree/master/docs/decode.md}{the guide}
 for more info.}
 
-\item{with_info}{`bool`, if True, tfds.load will return the tuple
+\item{with_info}{\code{bool}, if True, tfds.load will return the tuple
 (tf.data.Dataset, tfds.core.DatasetInfo) containing the info associated
 with the builder.}
 
-\item{builder_kwargs}{`dict` (optional), keyword arguments to be passed to the
-`tfds.core.DatasetBuilder` constructor. `data_dir` will be passed
+\item{builder_kwargs}{\code{dict} (optional), keyword arguments to be passed to the
+\code{tfds.core.DatasetBuilder} constructor. \code{data_dir} will be passed
 through by default.}
 
-\item{download_and_prepare_kwargs}{`dict` (optional) keyword arguments passed to
-`tfds.core.DatasetBuilder.download_and_prepare` if `download=True`. Allow
+\item{download_and_prepare_kwargs}{\code{dict} (optional) keyword arguments passed to
+\code{tfds.core.DatasetBuilder.download_and_prepare} if \code{download=True}. Allow
 to control where to download and extract the cached data. If not set,
 cache_dir and manual_dir will automatically be deduced from data_dir.}
 
-\item{as_dataset_kwargs}{`dict` (optional), keyword arguments passed to
-`tfds.core.DatasetBuilder.as_dataset`.}
+\item{as_dataset_kwargs}{\code{dict} (optional), keyword arguments passed to
+\code{tfds.core.DatasetBuilder.as_dataset}.}
 
-\item{try_gcs}{`bool`, if True, tfds.load will see if the dataset exists on
+\item{try_gcs}{\code{bool}, if True, tfds.load will see if the dataset exists on
 the public GCS bucket before building it locally.}
 }
 \description{

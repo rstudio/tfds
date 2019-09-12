@@ -12,20 +12,24 @@ token_text_encoder(vocab_list, oov_buckets = 1, oov_token = "UNK",
 \item{vocab_list}{list of tokens}
 
 \item{oov_buckets}{the number of integers to reserve for OOV hash buckets.
-Tokens that are OOV will be hash-modded into a OOV bucket in `encode`.}
+Tokens that are OOV will be hash-modded into a OOV bucket in \code{encode}.}
 
 \item{oov_token}{the strings to use for OOV ids in decode.}
 
 \item{lowercase}{whether to make all text and tokens lowercase.}
 
-\item{tokenizer}{`Tokenizer` responsible for converting incoming text into a
+\item{tokenizer}{\code{Tokenizer} responsible for converting incoming text into a
 list of tokens.}
 
 \item{strip_vocab}{whether to strip whitespace from the beggining and end of
-elements of `vocab_list`.}
+elements of \code{vocab_list}.}
 
 \item{decode_token_separator}{the string used to separate tokens when decoding.}
 }
 \description{
 Constructs a TokenTextEncoder.
+}
+\seealso{
+\code{\link[=save_token_text_encoder]{save_token_text_encoder()}}, \code{\link[=load_token_text_encoder]{load_token_text_encoder()}}, \code{\link[=encode]{encode()}}
+and \code{\link[=decode]{decode()}}
 }
