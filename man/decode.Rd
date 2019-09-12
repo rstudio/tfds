@@ -7,7 +7,7 @@
 decode(token_text_encoder, ids)
 }
 \arguments{
-\item{token_text_encoder}{a Token Text Encoder created with \code{token_text_encoder()}}
+\item{token_text_encoder}{a Token Text Encoder created with \code{\link[=token_text_encoder]{token_text_encoder()}}}
 
 \item{ids}{ids to decode using the Token Text encoder.}
 }

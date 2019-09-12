@@ -2,15 +2,15 @@
 % Please edit documentation in R/features_text.R
 \name{load_byte_text_encoder}
 \alias{load_byte_text_encoder}
-\title{Loads a Token Text Encoder}
+\title{Loads a Byte Text Encoder}
 \usage{
 load_byte_text_encoder(path)
 }
 \arguments{
-\item{path}{path of a saved token text encoder.}
+\item{path}{path of a saved byte text encoder.}
 }
 \description{
-Loads a Token Text Encoder
+Loads a Byte Text Encoder
 }
 \seealso{
 \code{\link[=byte_text_encoder]{byte_text_encoder()}}

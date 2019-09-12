@@ -7,7 +7,7 @@
 encode(token_text_encoder, text)
 }
 \arguments{
-\item{token_text_encoder}{a Token Text Encoder created with \code{token_text_encoder()}}
+\item{token_text_encoder}{a Token Text Encoder created with \code{\link[=token_text_encoder]{token_text_encoder()}}}
 
 \item{text}{string to encode using the Token Text encoder}
 }

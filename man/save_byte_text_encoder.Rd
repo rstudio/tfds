@@ -2,17 +2,17 @@
 % Please edit documentation in R/features_text.R
 \name{save_byte_text_encoder}
 \alias{save_byte_text_encoder}
-\title{Saves a token text encoder to a file}
+\title{Saves a byte text encoder to a file}
 \usage{
 save_byte_text_encoder(byte_text_encoder, path)
 }
 \arguments{
 \item{path}{path to save the text encoder.}
 
-\item{token_text_encoder}{a Token Text Encoder created with \code{token_text_encoder()}}
+\item{token_text_encoder}{a Byte Text Encoder created with \code{\link[=byte_text_encoder]{byte_text_encoder()}}}
 }
 \description{
-Saves a token text encoder to a file
+Saves a byte text encoder to a file
 }
 \seealso{
 \code{\link[=byte_text_encoder]{byte_text_encoder()}}

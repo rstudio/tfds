@@ -51,9 +51,26 @@ byte_text_encoder <- function(additional_tokens =  NULL) {
   tfds$features$text$ByteTextEncoder(additional_tokens = additional_tokens)
 }
 
+#' Subword Text Encoder
+#'
+#' Invertible TextEncoder using word pieces with a byte-level fallback.
+#'
+#' @param vocab_list list of subwords for the vocabulary. Note that an underscore
+#'  at the end of a subword indicates the end of the word (i.e. a space will be
+#'  inserted afterwards when decoding). Underscores in the interior of subwords
+#'  are disallowed and should use the underscore escape sequence.
+#'
+#' @seealso [save_subword_text_encoder()], [load_subword_text_encoder()], [encode()]
+#'  and [decode()]
+#'
+#' @export
+subword_text_encoder <- function(vocab_list) {
+  tfds$features$text$SubwordTextEncoder(vocab_list = vocab_list)
+}
+
 #' Saves a token text encoder to a file
 #'
-#' @param token_text_encoder a Token Text Encoder created with `token_text_encoder()`
+#' @param token_text_encoder a Token Text Encoder created with [token_text_encoder()]
 #' @param path path to save the text encoder.
 #'
 #' @seealso [token_text_encoder()]
@@ -74,9 +91,9 @@ load_token_text_encoder <- function(path) {
   tfds$features$text$TokenTextEncoder$load_from_file(path.expand(path))
 }
 
-#' Saves a token text encoder to a file
+#' Saves a byte text encoder to a file
 #'
-#' @param token_text_encoder a Token Text Encoder created with `token_text_encoder()`
+#' @param token_text_encoder a Byte Text Encoder created with [byte_text_encoder()]
 #' @param path path to save the text encoder.
 #'
 #' @seealso [byte_text_encoder()]
@@ -86,6 +103,29 @@ save_byte_text_encoder <- function(byte_text_encoder, path) {
   byte_text_encoder$save_to_file(path.expand(path))
 }
 
+#' Loads a Byte Text Encoder
+#'
+#' @param path path of a saved byte text encoder.
+#'
+#' @seealso [byte_text_encoder()]
+#'
+#' @export
+load_byte_text_encoder <- function(path) {
+  tfds$features$text$ByteTextEncoder$load_from_file(path.expand(path))
+}
+
+#' Saves a subword text encoder to a file
+#'
+#' @param subword_text_encoder a Subword Text Encoder created with [subword_text_encoder()]
+#' @param path path to save the text encoder.
+#'
+#' @seealso [byte_text_encoder()]
+#'
+#' @export
+save_subword_text_encoder <- function(subword_text_encoder, path) {
+  subword_text_encoder$save_to_file(path.expand(path))
+}
+
 #' Loads a Token Text Encoder
 #'
 #' @param path path of a saved token text encoder.
@@ -93,8 +133,8 @@ save_byte_text_encoder <- function(byte_text_encoder, path) {
 #' @seealso [byte_text_encoder()]
 #'
 #' @export
-load_byte_text_encoder <- function(path) {
-  tfds$features$text$ByteTextEncoder$load_from_file(path.expand(path))
+load_subword_text_encoder <- function(path) {
+  tfds$features$text$SubwordTextEncoder$load_from_file(path.expand(path))
 }
 
 #' Encode text

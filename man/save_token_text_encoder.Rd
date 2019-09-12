@@ -7,7 +7,7 @@
 save_token_text_encoder(token_text_encoder, path)
 }
 \arguments{
-\item{token_text_encoder}{a Token Text Encoder created with \code{token_text_encoder()}}
+\item{token_text_encoder}{a Token Text Encoder created with \code{\link[=token_text_encoder]{token_text_encoder()}}}
 
 \item{path}{path to save the text encoder.}
 }
