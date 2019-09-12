@@ -35,6 +35,22 @@ token_text_encoder <- function(vocab_list,
   )
 }
 
+#' Byte Text Encoder
+#'
+#' Byte encodes text
+#'
+#' @param additional_tokens list of additional tokens. These will be assigned
+#'  vocab ids [1, 1+len(additional_tokens)]. Useful for things like "end-of-string"
+#'  tokens (e.g. "").
+#'
+#' @seealso [save_byte_text_encoder()], [load_byte_text_encoder()], [encode()]
+#'  and [decode()]
+#'
+#' @export
+byte_text_encoder <- function(additional_tokens =  NULL) {
+  tfds$features$text$ByteTextEncoder(additional_tokens = additional_tokens)
+}
+
 #' Saves a token text encoder to a file
 #'
 #' @param token_text_encoder a Token Text Encoder created with `token_text_encoder()`
@@ -56,6 +72,29 @@ save_token_text_encoder <- function(token_text_encoder, path) {
 #' @export
 load_token_text_encoder <- function(path) {
   tfds$features$text$TokenTextEncoder$load_from_file(path.expand(path))
+}
+
+#' Saves a token text encoder to a file
+#'
+#' @param token_text_encoder a Token Text Encoder created with `token_text_encoder()`
+#' @param path path to save the text encoder.
+#'
+#' @seealso [byte_text_encoder()]
+#'
+#' @export
+save_byte_text_encoder <- function(byte_text_encoder, path) {
+  byte_text_encoder$save_to_file(path.expand(path))
+}
+
+#' Loads a Token Text Encoder
+#'
+#' @param path path of a saved token text encoder.
+#'
+#' @seealso [byte_text_encoder()]
+#'
+#' @export
+load_byte_text_encoder <- function(path) {
+  tfds$features$text$ByteTextEncoder$load_from_file(path.expand(path))
 }
 
 #' Encode text
