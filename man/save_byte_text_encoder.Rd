@@ -7,9 +7,9 @@
 save_byte_text_encoder(byte_text_encoder, path)
 }
 \arguments{
-\item{path}{path to save the text encoder.}
+\item{byte_text_encoder}{a Byte Text Encoder created with \code{\link[=byte_text_encoder]{byte_text_encoder()}}}
 
-\item{token_text_encoder}{a Byte Text Encoder created with \code{\link[=byte_text_encoder]{byte_text_encoder()}}}
+\item{path}{path to save the text encoder.}
 }
 \description{
 Saves a byte text encoder to a file

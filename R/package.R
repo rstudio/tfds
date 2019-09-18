@@ -1,3 +1,5 @@
+
+#' TensorFlow Datasets module.
 #'@export
 tfds <- NULL
 

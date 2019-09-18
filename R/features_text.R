@@ -40,7 +40,7 @@ token_text_encoder <- function(vocab_list,
 #' Byte encodes text
 #'
 #' @param additional_tokens list of additional tokens. These will be assigned
-#'  vocab ids [1, 1+len(additional_tokens)]. Useful for things like "end-of-string"
+#'  vocab ids \[1, 1+len(additional_tokens)\]. Useful for things like "end-of-string"
 #'  tokens (e.g. "").
 #'
 #' @seealso [save_byte_text_encoder()], [load_byte_text_encoder()], [encode()]
@@ -93,7 +93,7 @@ load_token_text_encoder <- function(path) {
 
 #' Saves a byte text encoder to a file
 #'
-#' @param token_text_encoder a Byte Text Encoder created with [byte_text_encoder()]
+#' @param byte_text_encoder a Byte Text Encoder created with [byte_text_encoder()]
 #' @param path path to save the text encoder.
 #'
 #' @seealso [byte_text_encoder()]

@@ -8,7 +8,7 @@ byte_text_encoder(additional_tokens = NULL)
 }
 \arguments{
 \item{additional_tokens}{list of additional tokens. These will be assigned
-vocab ids \link{1, 1+len(additional_tokens)}. Useful for things like "end-of-string"
+vocab ids [1, 1+len(additional_tokens)]. Useful for things like "end-of-string"
 tokens (e.g. "").}
 }
 \description{

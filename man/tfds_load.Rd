@@ -6,9 +6,9 @@
 \usage{
 tfds_load(name, split = NULL, data_dir = NULL, batch_size = NULL,
   in_memory = NULL, download = TRUE, shuffle_files = FALSE,
-  as_supervised = FALSE, decoders = NULL, with_info = FALSE,
-  builder_kwargs = NULL, download_and_prepare_kwargs = NULL,
-  as_dataset_kwargs = NULL, try_gcs = FALSE)
+  as_supervised = FALSE, decoders = NULL, builder_kwargs = NULL,
+  download_and_prepare_kwargs = NULL, as_dataset_kwargs = NULL,
+  try_gcs = FALSE)
 }
 \arguments{
 \item{name}{\code{str}, the registered name of the \code{DatasetBuilder} (the snake case
@@ -57,10 +57,6 @@ decoding. The structure should match the feature structure, but only
 customized feature keys need to be present. See
 \href{https://github.com/tensorflow/datasets/tree/master/docs/decode.md}{the guide}
 for more info.}
-
-\item{with_info}{\code{bool}, if True, tfds.load will return the tuple
-(tf.data.Dataset, tfds.core.DatasetInfo) containing the info associated
-with the builder.}
 
 \item{builder_kwargs}{\code{dict} (optional), keyword arguments to be passed to the
 \code{tfds.core.DatasetBuilder} constructor. \code{data_dir} will be passed

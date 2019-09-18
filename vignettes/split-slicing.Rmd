@@ -51,8 +51,7 @@ Instructions can be provided as either strings or `ReadInstructions`. Strings ar
 train_ds <- tfds_load('mnist:3.*.*', split='train')
 
 # The full `train` split and the full `test` split as two distinct datasets.
-library(zeallot)
-c(train_ds, test_ds) %<-%  tfds_load('mnist:3.*.*', split=list('train', 'test'))
+train_and_test_ds <-  tfds_load('mnist:3.*.*', split=list('train', 'test'))
 
 # The full `train` and `test` splits, concatenated together.
 train_test_ds <- tfds_load('mnist:3.*.*', split='train+test')
@@ -88,15 +87,6 @@ If a slice of a split is requested using the percent (%) unit, and the requested
 tfds_load("mnist:3.*.*", split="test[:99%]")
 # 2 records, from 49 to 51.
 tfds_load("mnist:3.*.*", split="test[49%:50%]")
-```
-
-Alternatively, the user can use the rounding `pct1_dropremainder`, so specified percentage boundaries are treated as multiples of 1%. This option should be used when consistency is needed (eg: len(5%) == 5 * len(1%)).
-
-Example:
-
-```{r}
-# Records 0 (included) to 99 (excluded).
-tfds_load("mnist:3.*.*", split="test[:99%]", rounding="pct1_dropremainder")
 ```
 
 ### Reproducibility

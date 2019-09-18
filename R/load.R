@@ -37,9 +37,6 @@
 #' customized feature keys need to be present. See
 #' [the guide](https://github.com/tensorflow/datasets/tree/master/docs/decode.md)
 #' for more info.
-#' @param with_info `bool`, if True, tfds.load will return the tuple
-#' (tf.data.Dataset, tfds.core.DatasetInfo) containing the info associated
-#' with the builder.
 #' @param builder_kwargs `dict` (optional), keyword arguments to be passed to the
 #' `tfds.core.DatasetBuilder` constructor. `data_dir` will be passed
 #' through by default.
@@ -63,12 +60,11 @@ tfds_load <- function(name,
                       shuffle_files = FALSE,
                       as_supervised = FALSE,
                       decoders = NULL,
-                      with_info = FALSE,
                       builder_kwargs = NULL,
                       download_and_prepare_kwargs = NULL,
                       as_dataset_kwargs = NULL,
                       try_gcs = FALSE) {
-  tfds$load(
+  ds <- tfds$load(
     name = name,
     split = split,
     data_dir = data_dir,
@@ -78,10 +74,89 @@ tfds_load <- function(name,
     shuffle_files = shuffle_files,
     as_supervised = as_supervised,
     decoders = decoders,
-    with_info = with_info,
     builder_kwargs = builder_kwargs,
     download_and_prepare_kwargs = download_and_prepare_kwargs,
     as_dataset_kwargs = as_dataset_kwargs,
-    try_gcs = try_gcs
+    try_gcs = try_gcs,
+    with_info = TRUE
+  )
+
+  info <- ds[[length(ds)]]
+  ds <- ds[[-length(ds)]]
+  class(ds) <- c("tfds_dataset", class(ds))
+  attr(ds, "info") <- jsonlite::fromJSON(
+    info$as_json,
+    simplifyDataFrame = FALSE,
+    simplifyMatrix = FALSE
+  )
+  ds
+}
+
+#' @export
+summary.tfds_dataset <- function(object, ...) {
+  info <- attr(object, "info")
+
+  cli::cat_rule(info$description)
+
+  cat_info("Name: ", cli::col_grey(info$name))
+  cat_info("Version: ", cli::col_grey(info$version))
+  cat_info("URLs: ", cli::col_grey(info$location %||% NA))
+  cat_info("Size: ", cli::col_grey(R.utils::hsize(as.numeric(info$sizeInBytes))))
+  cat_split(info$splits)
+  cat_schema(info$schema)
+
+  invisible(info)
+}
+
+cat_info <- function(...) {
+  cli::cat_line(cli::symbol$pointer, " ", ...)
+}
+
+cat_split <- function(splits) {
+  cat_info("Splits:")
+  for (s in splits) {
+    cli::cat_line(
+      cli::col_grey(
+        " ",
+        cli::symbol$em_dash,
+        " ", s$name,
+        " (",
+        s$statistics$numExamples,
+        " examples)"
+      )
+    )
+  }
+}
+
+cat_schema <- function(schema) {
+
+  cat_info("Schema:")
+  for (f in schema$feature) {
+    cli::cat_line(
+      cli::col_grey(
+        " ",
+        cli::symbol$em_dash,
+        " ", f$name,
+        " ", cat_dim(f$shape),
+        " ", f$type
+      )
+    )
+  }
+
+}
+
+cat_dim <- function(shape) {
+
+  if (is.null(shape))
+    dim <- ""
+  else
+    dim <- shape$dim
+
+  paste0(
+    "[",
+    paste(unlist(dim), collapse = ", "),
+    "]"
   )
 }
+
+
