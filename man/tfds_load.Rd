@@ -5,10 +5,10 @@
 \title{Loads the named dataset into a TensorFlow Dataset}
 \usage{
 tfds_load(name, split = NULL, data_dir = NULL, batch_size = NULL,
-  in_memory = NULL, download = TRUE, shuffle_files = FALSE,
-  as_supervised = FALSE, decoders = NULL, builder_kwargs = NULL,
+  download = TRUE, shuffle_files = FALSE, as_supervised = FALSE,
+  decoders = NULL, builder_kwargs = NULL,
   download_and_prepare_kwargs = NULL, as_dataset_kwargs = NULL,
-  try_gcs = FALSE)
+  try_gcs = FALSE, ...)
 }
 \arguments{
 \item{name}{\code{str}, the registered name of the \code{DatasetBuilder} (the snake case
@@ -31,11 +31,6 @@ Defaults to "~/tensorflow_datasets".}
 \item{batch_size}{\code{int}, if set, add a batch dimension to examples. Note that
 variable length features will be 0-padded. If
 \code{batch_size=-1}, will return the full dataset as \code{tf.Tensor}s.}
-
-\item{in_memory}{\code{bool}, if \code{True}, loads the dataset in memory which
-increases iteration speeds. Note that if \code{True} and the dataset has
-unknown dimensions, the features will be padded to the maximum
-size across the dataset.}
 
 \item{download}{\code{bool} (optional), whether to call
 \code{tfds.core.DatasetBuilder.download_and_prepare}
@@ -72,6 +67,8 @@ cache_dir and manual_dir will automatically be deduced from data_dir.}
 
 \item{try_gcs}{\code{bool}, if True, tfds.load will see if the dataset exists on
 the public GCS bucket before building it locally.}
+
+\item{...}{Additional parameters, currently not used.}
 }
 \description{
 Loads the named dataset into a TensorFlow Dataset

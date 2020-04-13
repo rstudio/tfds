@@ -1,6 +1,6 @@
 Package: tfds
 Title: Interface to 'TensorFlow' Collection of Datasets
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Authors@R: c(
   person("Daniel", "Falbel", role = c("ctb", "cph", "cre"), email = "daniel@rstudio.com"),
   person(family = "RStudio", role = c("ctb", "cph", "fnd")),

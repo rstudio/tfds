@@ -16,10 +16,6 @@
 #' @param batch_size `int`, if set, add a batch dimension to examples. Note that
 #' variable length features will be 0-padded. If
 #' `batch_size=-1`, will return the full dataset as `tf.Tensor`s.
-#' @param in_memory `bool`, if `True`, loads the dataset in memory which
-#' increases iteration speeds. Note that if `True` and the dataset has
-#' unknown dimensions, the features will be padded to the maximum
-#' size across the dataset.
 #' @param download `bool` (optional), whether to call
 #' `tfds.core.DatasetBuilder.download_and_prepare`
 #' before calling `tf.DatasetBuilder.as_dataset`. If `False`, data is
@@ -48,6 +44,7 @@
 #' `tfds.core.DatasetBuilder.as_dataset`.
 #' @param try_gcs `bool`, if True, tfds.load will see if the dataset exists on
 #' the public GCS bucket before building it locally.
+#' @param ... Additional parameters, currently not used.
 #'
 #'
 #' @export
@@ -55,7 +52,6 @@ tfds_load <- function(name,
                       split = NULL,
                       data_dir = NULL,
                       batch_size = NULL,
-                      in_memory = NULL,
                       download = TRUE,
                       shuffle_files = FALSE,
                       as_supervised = FALSE,
@@ -63,13 +59,13 @@ tfds_load <- function(name,
                       builder_kwargs = NULL,
                       download_and_prepare_kwargs = NULL,
                       as_dataset_kwargs = NULL,
-                      try_gcs = FALSE) {
+                      try_gcs = FALSE,
+                      ...) {
   ds <- tfds$load(
     name = name,
     split = split,
     data_dir = data_dir,
     batch_size = batch_size,
-    in_memory = in_memory,
     download = download,
     shuffle_files = shuffle_files,
     as_supervised = as_supervised,
@@ -78,7 +74,8 @@ tfds_load <- function(name,
     download_and_prepare_kwargs = download_and_prepare_kwargs,
     as_dataset_kwargs = as_dataset_kwargs,
     try_gcs = try_gcs,
-    with_info = TRUE
+    with_info = TRUE,
+    ...
   )
 
   info <- ds[[length(ds)]]
