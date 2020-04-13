@@ -59,7 +59,8 @@ tfds_load <- function(name,
                       builder_kwargs = NULL,
                       download_and_prepare_kwargs = NULL,
                       as_dataset_kwargs = NULL,
-                      try_gcs = FALSE) {
+                      try_gcs = FALSE,
+                      ...) {
   ds <- tfds$load(
     name = name,
     split = split,

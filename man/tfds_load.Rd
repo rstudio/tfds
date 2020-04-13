@@ -8,7 +8,7 @@ tfds_load(name, split = NULL, data_dir = NULL, batch_size = NULL,
   download = TRUE, shuffle_files = FALSE, as_supervised = FALSE,
   decoders = NULL, builder_kwargs = NULL,
   download_and_prepare_kwargs = NULL, as_dataset_kwargs = NULL,
-  try_gcs = FALSE)
+  try_gcs = FALSE, ...)
 }
 \arguments{
 \item{name}{\code{str}, the registered name of the \code{DatasetBuilder} (the snake case
