@@ -4,7 +4,9 @@
 \name{tfds}
 \alias{tfds}
 \title{TensorFlow Datasets module.}
-\format{An object of class \code{python.builtin.module} (inherits from \code{python.builtin.object}) of length 5.}
+\format{
+An object of class \code{python.builtin.module} (inherits from \code{python.builtin.object}) of length 5.
+}
 \usage{
 tfds
 }
