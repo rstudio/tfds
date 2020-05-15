@@ -20,25 +20,7 @@ library(tfds)
 
 All `DatasetBuilder`s expose various data subsets defined as splits (eg: `train`, `test`). When constructing a `tf.data.Dataset` instance using either `tfds_load()` or `tfds$DatasetBuilder$as_dataset()`, one can specify which split(s) to retrieve. It is also possible to retrieve slice(s) of split(s) as well as combinations of those.
 
-## Two APIs: S3 and legacy
-
-Each versioned dataset either implements the new S3 API, or the legacy API, which will eventually be retired. New datasets (except Beam ones for now) all implement S3, and we're slowly rolling it out to all datasets.
-
-To find out whether a dataset implements S3, one can look at the source code or call:
-
-`ds_builder$version$implements(tfds$core$Experiment$S3)`
-
-For example `mnist`:
-
-```{r}
-mnist_builder <- tfds$builder(name = "mnist")
-mnist_builder$version$implements(tfds$core$Experiment$S3)
-```
-
-In this document we will only describe the **S3 Slicing API**. Refer to
-[this link](https://www.tensorflow.org/datasets/splits) for information about the legacy API.
-
-## S3 Slicing API
+## Slicing API
 
 Slicing instructions are specified in `tfds_load` or `tfds$DatasetBuilder$as_dataset`.
 
@@ -91,7 +73,7 @@ tfds_load("mnist:3.*.*", split="test[49%:50%]")
 
 ### Reproducibility
 
-The S3 API guarantees that any given split slice (or `ReadInstruction`) will always produce the same set of records on a given dataset, as long as the major version of the dataset is constant.
+The sub-split API guarantees that any given split slice (or `ReadInstruction`) will always produce the same set of records on a given dataset, as long as the major version of the dataset is constant.
 
 For example, `tfds_load("mnist:3.0.0", split="train[10:20]")` and `tfds_load("mnist:3.2.0", split="train[10:20]")` will always contain the same elements - regardless of platform, architecture, etc. - even though some of the records might have different values (eg: image encoding, label, ...).
 

@@ -16,10 +16,8 @@
 #' @param batch_size `int`, if set, add a batch dimension to examples. Note that
 #' variable length features will be 0-padded. If
 #' `batch_size=-1`, will return the full dataset as `tf.Tensor`s.
-#' @param in_memory `bool`, if `True`, loads the dataset in memory which
-#' increases iteration speeds. Note that if `True` and the dataset has
-#' unknown dimensions, the features will be padded to the maximum
-#' size across the dataset.
+#' @param read_config `tfds.ReadConfig`, additional options to configure the input pipeline
+#' (e.g. `seed`, `num parallel reads`,...).
 #' @param download `bool` (optional), whether to call
 #' `tfds.core.DatasetBuilder.download_and_prepare`
 #' before calling `tf.DatasetBuilder.as_dataset`. If `False`, data is
@@ -55,11 +53,11 @@ tfds_load <- function(name,
                       split = NULL,
                       data_dir = NULL,
                       batch_size = NULL,
-                      in_memory = NULL,
                       download = TRUE,
                       shuffle_files = FALSE,
                       as_supervised = FALSE,
                       decoders = NULL,
+                      read_config = NULL,
                       builder_kwargs = NULL,
                       download_and_prepare_kwargs = NULL,
                       as_dataset_kwargs = NULL,
@@ -69,16 +67,16 @@ tfds_load <- function(name,
     split = split,
     data_dir = data_dir,
     batch_size = batch_size,
-    in_memory = in_memory,
-    download = download,
     shuffle_files = shuffle_files,
+    download = download,
     as_supervised = as_supervised,
     decoders = decoders,
+    read_config = read_config,
+    with_info = TRUE,
     builder_kwargs = builder_kwargs,
     download_and_prepare_kwargs = download_and_prepare_kwargs,
     as_dataset_kwargs = as_dataset_kwargs,
-    try_gcs = try_gcs,
-    with_info = TRUE
+    try_gcs = try_gcs
   )
 
   info <- ds[[length(ds)]]

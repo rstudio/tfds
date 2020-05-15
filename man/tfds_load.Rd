@@ -4,11 +4,21 @@
 \alias{tfds_load}
 \title{Loads the named dataset into a TensorFlow Dataset}
 \usage{
-tfds_load(name, split = NULL, data_dir = NULL, batch_size = NULL,
-  in_memory = NULL, download = TRUE, shuffle_files = FALSE,
-  as_supervised = FALSE, decoders = NULL, builder_kwargs = NULL,
-  download_and_prepare_kwargs = NULL, as_dataset_kwargs = NULL,
-  try_gcs = FALSE)
+tfds_load(
+  name,
+  split = NULL,
+  data_dir = NULL,
+  batch_size = NULL,
+  download = TRUE,
+  shuffle_files = FALSE,
+  as_supervised = FALSE,
+  decoders = NULL,
+  read_config = NULL,
+  builder_kwargs = NULL,
+  download_and_prepare_kwargs = NULL,
+  as_dataset_kwargs = NULL,
+  try_gcs = FALSE
+)
 }
 \arguments{
 \item{name}{\code{str}, the registered name of the \code{DatasetBuilder} (the snake case
@@ -32,11 +42,6 @@ Defaults to "~/tensorflow_datasets".}
 variable length features will be 0-padded. If
 \code{batch_size=-1}, will return the full dataset as \code{tf.Tensor}s.}
 
-\item{in_memory}{\code{bool}, if \code{True}, loads the dataset in memory which
-increases iteration speeds. Note that if \code{True} and the dataset has
-unknown dimensions, the features will be padded to the maximum
-size across the dataset.}
-
 \item{download}{\code{bool} (optional), whether to call
 \code{tfds.core.DatasetBuilder.download_and_prepare}
 before calling \code{tf.DatasetBuilder.as_dataset}. If \code{False}, data is
@@ -47,7 +52,7 @@ expected to be in \code{data_dir}. If \code{True} and the data is already in
 Defaults to \code{False}.}
 
 \item{as_supervised}{\code{bool}, if \code{True}, the returned \code{tf.data.Dataset}
-will have a 2-tuple structure \code{(input, label)} according to
+will have a 2-tuple structure \verb{(input, label)} according to
 \code{builder.info.supervised_keys}. If \code{False}, the default,
 the returned \code{tf.data.Dataset} will have a dictionary with all the
 features.}
@@ -57,6 +62,9 @@ decoding. The structure should match the feature structure, but only
 customized feature keys need to be present. See
 \href{https://github.com/tensorflow/datasets/tree/master/docs/decode.md}{the guide}
 for more info.}
+
+\item{read_config}{\code{tfds.ReadConfig}, additional options to configure the input pipeline
+(e.g. \code{seed}, \verb{num parallel reads},...).}
 
 \item{builder_kwargs}{\code{dict} (optional), keyword arguments to be passed to the
 \code{tfds.core.DatasetBuilder} constructor. \code{data_dir} will be passed

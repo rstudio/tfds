@@ -4,9 +4,15 @@
 \alias{token_text_encoder}
 \title{Token Text Encoder}
 \usage{
-token_text_encoder(vocab_list, oov_buckets = 1, oov_token = "UNK",
-  lowercase = FALSE, tokenizer = NULL, strip_vocab = TRUE,
-  decode_token_separator = " ")
+token_text_encoder(
+  vocab_list,
+  oov_buckets = 1,
+  oov_token = "UNK",
+  lowercase = FALSE,
+  tokenizer = NULL,
+  strip_vocab = TRUE,
+  decode_token_separator = " "
+)
 }
 \arguments{
 \item{vocab_list}{list of tokens}

@@ -4,9 +4,15 @@
 \alias{install_tfds}
 \title{Installs TensorFlow Datasets}
 \usage{
-install_tfds(method = c("auto", "virtualenv", "conda"), conda = "auto",
-  version = "default", envname = NULL, restart_session = TRUE,
-  conda_python_version = "3.6", ...)
+install_tfds(
+  method = c("auto", "virtualenv", "conda"),
+  conda = "auto",
+  version = "default",
+  envname = NULL,
+  restart_session = TRUE,
+  conda_python_version = "3.6",
+  ...
+)
 }
 \arguments{
 \item{method}{Installation method. By default, "auto" automatically finds a
@@ -16,8 +22,8 @@ available on Windows (as this isn't supported by TensorFlow). Note also
 that since this command runs without privilege the "system" method is
 available only on Windows.}
 
-\item{conda}{Path to conda executable (or "auto" to find conda using the
-PATH and other conventional install locations).}
+\item{conda}{The path to a \code{conda} executable. Use \code{"auto"} to allow \code{reticulate} to
+automatically find an appropriate \code{conda} binary. See \strong{Finding Conda} for more details.}
 
 \item{version}{By default the latest PyPi version will be installed.
 
