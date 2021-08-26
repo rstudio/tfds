@@ -31,7 +31,7 @@ install_tfds <- function(method = c("auto", "virtualenv", "conda"),
                          version = "default",
                          envname = NULL,
                          restart_session = TRUE,
-                         conda_python_version = "3.6",
+                         conda_python_version = NULL,
                          ...) {
 
   package_string <- "tensorflow_datasets"
