@@ -10,7 +10,7 @@ install_tfds(
   version = "default",
   envname = NULL,
   restart_session = TRUE,
-  conda_python_version = "3.6",
+  conda_python_version = NULL,
   ...
 )
 }
@@ -22,8 +22,9 @@ available on Windows (as this isn't supported by TensorFlow). Note also
 that since this command runs without privilege the "system" method is
 available only on Windows.}
 
-\item{conda}{The path to a \code{conda} executable. Use \code{"auto"} to allow \code{reticulate} to
-automatically find an appropriate \code{conda} binary. See \strong{Finding Conda} for more details.}
+\item{conda}{The path to a \code{conda} executable. Use \code{"auto"} to allow
+\code{reticulate} to automatically find an appropriate \code{conda} binary. See
+\strong{Finding Conda} for more details.}
 
 \item{version}{By default the latest PyPi version will be installed.
 
@@ -38,8 +39,8 @@ only occur within RStudio).}
 \item{conda_python_version}{the python version installed in the created conda
 environment. Python 3.6 is installed by default.}
 
-\item{...}{other arguments passed to \code{\link[reticulate:conda_install]{reticulate::conda_install()}} or
-\code{\link[reticulate:virtualenv_install]{reticulate::virtualenv_install()}}.}
+\item{...}{other arguments passed to \code{\link[reticulate:conda-tools]{reticulate::conda_install()}} or
+\code{\link[reticulate:virtualenv-tools]{reticulate::virtualenv_install()}}.}
 }
 \description{
 Installs TensorFlow Datasets

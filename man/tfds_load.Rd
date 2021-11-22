@@ -60,7 +60,7 @@ features.}
 \item{decoders}{Nested dict of \code{Decoder} objects which allow to customize the
 decoding. The structure should match the feature structure, but only
 customized feature keys need to be present. See
-\href{https://github.com/tensorflow/datasets/tree/master/docs/decode.md}{the guide}
+\href{https://github.com/tensorflow/datasets/tree/main/docs/decode.md}{the guide}
 for more info.}
 
 \item{read_config}{\code{tfds.ReadConfig}, additional options to configure the input pipeline
